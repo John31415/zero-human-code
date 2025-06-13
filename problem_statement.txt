@@ -1,0 +1,51 @@
+Propongo el siguiente juego que consta de ~N~ pasos, comenzando con una lista vacía de números enteros, en el paso ~i~ ~(~~1~~\leq~~i~~\leq~~N~~)~ se recorren los números ~j~ ~(1 \leq j \leq N)~ tal que ~j~ es un múltiplo de ~i~, para cada ~j~ haga la operación correspondiente entre las siguientes:
+
+ - ~1: ~Si ~j~ se encuentra en la lista, es eliminado de la lista,
+ - ~2: ~Si ~j~ no se encuentra en la lista, es agregado a la lista;
+
+Cada caso de prueba consta de ~T~ preguntas, para cada pregunta diga la suma de los números que hay en la lista (luego de responder cada pregunta se vacía la lista).
+
+##Ejemplo
+
+~N=5:~
+
+~0-\emptyset~
+
+~1-1,2,3,4,5~
+
+~2-1,3,5~
+
+~3-1,5~
+
+~4-1,4,5~
+
+~5-1,4~
+
+#Respuesta
+
+~5~
+
+##Restricciones
+
+~1 \leq T \leq 10^6~
+
+~0 \leq N \leq 10^{18}~
+
+##Entrada
+
+La primera línea consta de un entero ~T~, seguido por ~T~ líneas cada una con un entero ~N~.
+
+##Salida
+
+La salida consta de ~T~ líneas, cada una con un entero, la respuesta a cada pregunta módulo ~1234567891~.
+
+##Ejemplo de Entrada
+
+    2
+    2
+    5
+
+##Ejemplo de Salida
+
+    1
+    5
