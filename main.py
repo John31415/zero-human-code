@@ -12,7 +12,6 @@ HINT3 = "\nLa respuesta puede ser muy grande\n"
 def get_problem_statement():
     with open('problem_statement.txt', 'r', encoding='latin-1') as archivo:
         contenido = archivo.read()
-
     return contenido
 
 def get_code(text):
