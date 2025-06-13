@@ -1,18 +1,25 @@
-import math
+def suma_de_numeros_en_lista(N):
+    """
+    Calcula la suma de los números que están en la lista después de N pasos.
+    
+    :param N: El número de pasos.
+    :return: La suma de los números en la lista módulo 1234567891.
+    """
+    MOD = 1234567891
+    
+    # Calcula el mayor entero k tal que k al cuadrado es menor o igual a N
+    k = int(N ** 0.5)
+    
+    # Calcula la suma de los cuadrados perfectos menores o iguales a N
+    suma = (k * (k + 1) * (2 * k + 1)) // 6
+    
+    return suma % MOD
 
-# Leer el número de casos de prueba
+# Lectura de la entrada
 T = int(input())
 
-# Procesar cada caso de prueba
+# Procesamiento de cada caso de prueba
 for _ in range(T):
-    # Leer el valor de N
     N = int(input())
-    
-    # Calcular el número de cuadrados perfectos hasta N
-    n = int(math.sqrt(N))
-    
-    # Calcular la suma de los cuadrados perfectos hasta N utilizando la fórmula
-    suma = n*(n+1)*(2*n+1)//6
-    
-    # Imprimir el resultado módulo 1234567891
-    print(suma % 1234567891)
+    resultado = suma_de_numeros_en_lista(N)
+    print(resultado)

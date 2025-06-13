@@ -10,6 +10,7 @@ PROMPT2_1 = "\n\nPara resolver este problema:\n\n"
 PROMPT2_2 = "\n\nPropusiste el siguiente codigo:\n\n"
 PROMPT2_3 = "\n\nPero obtuvo el veredicto:\n\n"
 PROMPT2_4 = "\n\nIntentalo de nuevo.\n\n"
+PROMPT3 = "\n\nAnaliza si el codigo que propones satisface los requrimientos de complejidad temporal del problema dado. Asegurate que satisface los requerimientos. Ten en cuenta que Python hace aproximadamente 10^7 operaciones por segundo.\n\n"
 HINT1 = "\nLos numeros con cantidad impar de divisores son los cuadrados perfectos\n"
 HINT2 = "\nLa suma de los cuadrados perfectos tiene formula cerrada\n"
 HINT3 = "\nLa respuesta puede ser muy grande\n"
@@ -26,9 +27,11 @@ def get_code(text):
 def main():
     problem_statement = get_problem_statement()
     attempts = 10
-    PROMPT = PROMPT1 + problem_statement + HINT1 #+ HINT2 + HINT3
+    PROMPT = PROMPT1 + problem_statement #+ HINT1 + HINT2 + HINT3
     VEREDICTO = ""
+    total_attempts = 0
     while attempts:
+        total_attempts += 1
         attempts -= 1
         ans_LLM = ask(PROMPT) 
         print(ans_LLM)
@@ -44,12 +47,12 @@ def main():
         veredicto = "TIEMPO LIMITE EXCEDIDO"
         if band == 0:
             veredicto = "RESPUESTA INCORRECTA"
-        PROMPT = PROMPT2_1 + problem_statement + PROMPT2_2 + code + PROMPT2_3 + veredicto + PROMPT2_4 + HINT1 #+ HINT2 + HINT3
+        PROMPT = PROMPT2_1 + problem_statement + PROMPT2_2 + code + PROMPT2_3 + veredicto + PROMPT2_4 + PROMPT1 + PROMPT3 #+ HINT1 + HINT2 + HINT3
         VEREDICTO = veredicto
     if VEREDICTO == "ACCEPTED":
-        print(f"\033[32m{VEREDICTO}\033[0m")
+        print(f"\033[32m{VEREDICTO} ({total_attempts} attempts)\033[0m")
     if VEREDICTO == "TIEMPO LIMITE EXCEDIDO":
-        print("\033[34mTIME LIMIT EXCEECED\033[0m")
+        print("\033[34mTIME LIMIT EXCEEDED\033[0m")
     if VEREDICTO == "RESPUESTA INCORRECTA":
         print("\033[31mWROND ANSWER\033[0m")
         

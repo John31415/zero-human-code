@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 
 def leer_primeros_caracteres(archivo, max_caracteres=20):
-    """Lee los primeros n caracteres de un archivo"""
     with open(archivo, 'r') as f:
         contenido = f.read(max_caracteres)
     return contenido
