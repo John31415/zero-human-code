@@ -1,16 +1,18 @@
 import math
 
-def suma_cuadrados(N):
-    """
-    Calcula la suma de los cuadrados perfectos menores o iguales a N
-    """
-    limite = int(math.sqrt(N))  # El límite es la raíz cuadrada de N
-    suma = 0
-    for i in range(1, limite + 1):
-        suma += i ** 2
-    return suma % 1234567891  # Devuelve la suma módulo 1234567891
+# Leer el número de casos de prueba
+T = int(input())
 
-T = int(input())  # Lee el número de casos de prueba
+# Procesar cada caso de prueba
 for _ in range(T):
-    N = int(input())  # Lee el valor de N
-    print(suma_cuadrados(N))  # Imprime la respuesta
+    # Leer el valor de N
+    N = int(input())
+    
+    # Calcular el número de cuadrados perfectos hasta N
+    n = int(math.sqrt(N))
+    
+    # Calcular la suma de los cuadrados perfectos hasta N utilizando la fórmula
+    suma = n*(n+1)*(2*n+1)//6
+    
+    # Imprimir el resultado módulo 1234567891
+    print(suma % 1234567891)
